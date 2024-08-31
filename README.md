@@ -1,4 +1,4 @@
-![screenshot of program](https://github.com/tmjonker/burger_bonanza-frontend/blob/master/images/bb1.png)
+![screenshot of program](https://github.com/tmjonker8/Burger_Bonanza_Frontend/blob/master/images/bb1.png)
 
 # Getting Started with Create React App
 
