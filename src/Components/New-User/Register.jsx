@@ -66,7 +66,7 @@ function Register(props) {
           password1: "",
           password2: "",
         });
-  
+
         register();
       } else {
         handleUnClickOpen();
@@ -86,7 +86,7 @@ function Register(props) {
     // POST request to authenticate login information.  Token is returned by server and stored in localStorage.
     $.ajax({
       type: "post",
-      url: "http://localhost:8081/register",
+      url: "http://localhost:8080/register",
       data: JSON.stringify(credentials),
       contentType: "application/json; charset=utf-8",
       traditional: true,
@@ -146,19 +146,22 @@ function Register(props) {
               <DialogBox
                 open={unOpen}
                 title="Invalid Username"
-                text={
-                  "Username is invalid."
-                }
+                text={"Username is invalid."}
                 close={handleUnClose}
               />
               <TextField
-                error={!ValidateService.validatePasswordsMatch(values) || !ValidateService.validatePassword1(values)}
+                error={
+                  !ValidateService.validatePasswordsMatch(values) ||
+                  !ValidateService.validatePassword1(values)
+                }
                 id="password1-field"
                 label="Password"
                 variant="outlined"
                 type="password"
                 helperText={
-                  !ValidateService.validatePassword1(values) ? "Passwords must meet guidelines." : ""
+                  !ValidateService.validatePassword1(values)
+                    ? "Passwords must meet guidelines."
+                    : ""
                 }
                 autoComplete="current-password"
                 value={values.password1}
@@ -167,13 +170,18 @@ function Register(props) {
                 required
               />
               <TextField
-                error={!ValidateService.validatePasswordsMatch(values) || !ValidateService.validatePassword2(values)}
+                error={
+                  !ValidateService.validatePasswordsMatch(values) ||
+                  !ValidateService.validatePassword2(values)
+                }
                 id="password2-field"
                 label="Verify Password"
                 variant="outlined"
                 type="password"
                 helperText={
-                  !ValidateService.validatePassword2(values) ? "Passwords must meet guidelines." : ""
+                  !ValidateService.validatePassword2(values)
+                    ? "Passwords must meet guidelines."
+                    : ""
                 }
                 value={values.password2}
                 onChange={(e) => handleChange("password2", e)}

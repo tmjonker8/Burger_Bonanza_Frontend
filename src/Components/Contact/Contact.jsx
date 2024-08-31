@@ -29,7 +29,7 @@ function Contact() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    sendMessage(values)
+    sendMessage(values);
 
     setValues({
       ...values,
@@ -41,15 +41,15 @@ function Contact() {
 
   function sendMessage() {
     const message = {
-        from: values.from,
-        subject: values.subject,
-        body: values.body
+      from: values.from,
+      subject: values.subject,
+      body: values.body,
     };
 
     // POST request to authenticate login information.  Token is returned by server and stored in localStorage.
     $.ajax({
       type: "post",
-      url: "http://localhost:8081/contact",
+      url: "http://localhost:8080/contact",
       data: JSON.stringify(message),
       contentType: "application/json; charset=utf-8",
       traditional: true,
@@ -57,11 +57,11 @@ function Contact() {
       success: function (data) {
         alert("message successfully sent!");
       },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
         alert("message was not sent.");
-      }
+      },
     });
-}
+  }
 
   return (
     <div>

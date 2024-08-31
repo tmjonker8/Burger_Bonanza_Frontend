@@ -90,7 +90,6 @@ function CheckOut(props) {
   }
 
   function handleSelectBoxChange(event) {
-
     let index = event.target.value;
     console.log(userAddresses[index]);
 
@@ -102,7 +101,7 @@ function CheckOut(props) {
       city: userAddresses[index].city,
       state: userAddresses[index].state,
       zipCode: userAddresses[index].zipCode,
-    })
+    });
   }
 
   let user = JSON.parse(localStorage.getItem("user"));
@@ -111,7 +110,7 @@ function CheckOut(props) {
     $.ajax({
       type: "post",
       headers: { Authorization: user.token },
-      url: "http://localhost:8081/purchase",
+      url: "http://localhost:8080/purchase",
       data: JSON.stringify(purchase),
       contentType: "application/json; charset=utf-8",
       traditional: true,
@@ -131,7 +130,7 @@ function CheckOut(props) {
     $.ajax({
       type: "get",
       headers: { Authorization: user.token },
-      url: "http://localhost:8081/addresses/" + user.username,
+      url: "http://localhost:8080/addresses/" + user.username,
       contentType: "application/json; charset=utf-8",
       async: false,
       traditional: true,

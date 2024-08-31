@@ -21,7 +21,6 @@ const theme = createTheme({
 });
 
 function AddForm(props) {
-  
   const location = useLocation();
   let user;
   if (location.state !== null) {
@@ -74,7 +73,7 @@ function AddForm(props) {
     $.ajax({
       type: "post",
       headers: { Authorization: user.token },
-      url: "http://localhost:8081/api/menu/" + values.id,
+      url: "http://localhost:8080/api/menu/" + values.id,
       data: JSON.stringify(menuItem),
       contentType: "application/json; charset=utf-8",
       traditional: true,
@@ -86,8 +85,7 @@ function AddForm(props) {
 
   function checkIsAdmin() {
     for (let i = 0; i < user.roles.length; i++) {
-      if (user.roles[i].name === "Admin")
-        return true;
+      if (user.roles[i].name === "Admin") return true;
     }
     return false;
   }
@@ -228,7 +226,7 @@ function AddForm(props) {
                       <Select
                         required
                         inputProps={{
-                          MenuProps: {disableScrollLock: true}
+                          MenuProps: { disableScrollLock: true },
                         }}
                         error={values.category === ""}
                         labelId="select-category"

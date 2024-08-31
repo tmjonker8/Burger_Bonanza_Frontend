@@ -53,7 +53,7 @@ function ChangePassword(props) {
     $.ajax({
       type: "post",
       headers: { Authorization: user.token },
-      url: "http://localhost:8081/change",
+      url: "http://localhost:8080/change",
       data: JSON.stringify(credentials),
       contentType: "application/json; charset=utf-8",
       traditional: true,
@@ -67,7 +67,7 @@ function ChangePassword(props) {
       },
     });
   }
-  
+
   // if valid token isn't passed over, then page was accessed without a sign-in.  User must sign-in to access this page.
   if (user === null) {
     return (

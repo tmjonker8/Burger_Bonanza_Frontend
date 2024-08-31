@@ -6,9 +6,7 @@ import PageHeader from "../General/PageHeader.jsx";
 import { useEffect } from "react";
 
 function Menu(props) {
-  useEffect(() => {
-    
-  },[]);
+  useEffect(() => {}, []);
 
   let menu;
 
@@ -16,7 +14,7 @@ function Menu(props) {
   function getMenu() {
     $.ajax({
       type: "get",
-      url: "http://localhost:8081/api/menu",
+      url: "http://localhost:8080/api/menu",
       contentType: "application/json; charset=utf-8",
       async: false,
       traditional: true,
@@ -40,7 +38,14 @@ function Menu(props) {
       category: menu.category,
     };
 
-    return <MenuItem key={menuItem.key} item={menuItem} add={props.add} persist={props.persist} />;
+    return (
+      <MenuItem
+        key={menuItem.key}
+        item={menuItem}
+        add={props.add}
+        persist={props.persist}
+      />
+    );
   }
 
   getMenu(); // GET menu items from database before returning view.

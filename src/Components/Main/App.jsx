@@ -46,7 +46,7 @@ function App() {
       $.ajax({
         type: "post",
         headers: { Authorization: token },
-        url: "http://localhost:8081/cart/" + user.username,
+        url: "http://localhost:8080/cart/" + user.username,
         data: JSON.stringify(shoppingCart),
         contentType: "application/json; charset=utf-8",
         traditional: true,
@@ -70,7 +70,7 @@ function App() {
       $.ajax({
         type: "get",
         headers: { Authorization: token },
-        url: "http://localhost:8081/cart/" + user.username,
+        url: "http://localhost:8080/cart/" + user.username,
         contentType: "application/json; charset=utf-8",
         traditional: true,
 
