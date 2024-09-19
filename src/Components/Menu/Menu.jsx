@@ -66,6 +66,23 @@ function Menu(props) {
           {menu.map((item) => (item.id < 20 ? createMenuItem(item) : null))}
         </Grid>
       </Paper>
+      <Paper
+        elevation={3}
+        sx={{
+          marginTop: 4,
+          marginBottom: 8,
+          opacity: 0.9,
+        }}
+      >
+        <Grid container spacing={1}>
+          <Grid item xs={12} l={12}>
+            <PageHeader message="Burgers" />
+          </Grid>
+          {menu.map((item) =>
+            item.id > 6000 && item.id < 6100 ? createMenuItem(item) : null
+          )}
+        </Grid>
+      </Paper>
 
       <Paper
         elevation={3}
