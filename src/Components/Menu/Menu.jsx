@@ -79,7 +79,7 @@ function Menu(props) {
             <PageHeader message="Burgers" />
           </Grid>
           {menu.map((item) =>
-            item.id > 6000 && item.id < 6100 ? createMenuItem(item) : null
+            item.id > 30 && item.id < 40 ? createMenuItem(item) : null
           )}
         </Grid>
       </Paper>
