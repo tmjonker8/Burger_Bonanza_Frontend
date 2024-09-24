@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import PageHeader from "../General/PageHeader.jsx";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CartItems from "../Cart/CartItems.jsx";
+import CartItemsCheckout from "../Cart/CartItemsCheckout.jsx";
 import TextField from "@mui/material/TextField";
 import CartService from "../Services/CartService.js";
 import DialogBox from "../General/DialogBox.jsx";
@@ -163,7 +163,7 @@ function CheckOut(props) {
             <PageHeader message="Cart" />
           </Grid>
           {currentCart.length > 0 ? (
-            <CartItems
+            <CartItemsCheckout
               data={currentCart}
               old={props.data}
               remove={props.remove}
