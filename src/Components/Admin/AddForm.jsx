@@ -85,7 +85,7 @@ function AddForm(props) {
 
   function checkIsAdmin() {
     for (let i = 0; i < user.roles.length; i++) {
-      if (user.roles[i].name === "Admin") return true;
+      if (user.roles[i].name === "ADMIN") return true;
     }
     return false;
   }

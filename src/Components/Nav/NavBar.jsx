@@ -165,23 +165,21 @@ function NavBar(props) {
                 </Menu>
               </Box>
 
-              
-                <Typography
-                  variant="h6"
-                  noWrap
-                  component="a"
-                  href="/"
-                  sx={{
-                    display: { xs: "flex", md: "none" },
-                    flexGrow: 1,
-                    mr: 2,
-                    color: "inherit",
-                    textDecoration: "none"
-                  }}
-                >
-                  Burger Bonanza!
-                </Typography>
-            
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                href="/"
+                sx={{
+                  display: { xs: "flex", md: "none" },
+                  flexGrow: 1,
+                  mr: 2,
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                Burger Bonanza!
+              </Typography>
 
               <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                 {pages.map((page) => (
@@ -227,7 +225,7 @@ function NavBar(props) {
                   aria-haspopup="true"
                   onClick={handleMenu}
                   color="inherit"
-                  sx={{ pr: 0}}
+                  sx={{ pr: 0 }}
                 >
                   <AccountCircle />
                 </IconButton>
@@ -262,9 +260,6 @@ function NavBar(props) {
                     <div>
                       <p className="greeting">{user.username}</p>
                       <hr />
-                      <MenuItem onClick={handleAddMenuClick}>
-                        {user !== null ? "Personal Information" : null}
-                      </MenuItem>
                       <MenuItem onClick={handleAddMenuClick}>
                         {user !== null ? "Order History" : null}
                       </MenuItem>
