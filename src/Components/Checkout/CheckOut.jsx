@@ -73,6 +73,7 @@ function CheckOut(props) {
       totalPrice: total,
       username: JSON.parse(localStorage.getItem("user")).username,
       address: values,
+      userId: JSON.parse(localStorage.getItem("user")).id,
     };
 
     handleClickOpen();
@@ -80,6 +81,7 @@ function CheckOut(props) {
 
     setValues({
       ...values,
+      id: 0,
       name: "",
       address1: "",
       address2: "",
@@ -95,6 +97,7 @@ function CheckOut(props) {
 
     setValues({
       ...values,
+      id: user.id,
       name: userAddresses[index].name,
       address1: userAddresses[index].address,
       address2: userAddresses[index].address2,

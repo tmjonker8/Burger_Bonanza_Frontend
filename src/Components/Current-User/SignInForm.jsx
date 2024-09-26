@@ -61,8 +61,8 @@ function SignInForm(props) {
         let tokenString = JSON.stringify(data);
         let token = JSON.stringify({
           token: "Bearer " + JSON.parse(tokenString).token.token,
+          id: JSON.parse(tokenString).user.id,
           username: credentials.username,
-          password: credentials.password,
           roles: JSON.parse(tokenString).user.roles,
         });
 
