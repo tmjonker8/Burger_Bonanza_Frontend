@@ -149,7 +149,7 @@ function AddForm(props) {
                 opacity: 0.9,
               }}
             >
-              <PageHeader message="Add Menu Item" />
+              <PageHeader message="Add" />
               <form onSubmit={handleSubmit}>
                 <Grid
                   container
