@@ -63,7 +63,9 @@ function Menu(props) {
           <Grid item xs={12} l={12}>
             <PageHeader message="Appetizers" />
           </Grid>
-          {menu.map((item) => (item.id < 20 ? createMenuItem(item) : null))}
+          {menu.map((item) =>
+            item.category === "Appetizer" ? createMenuItem(item) : null
+          )}
         </Grid>
       </Paper>
       <Paper
@@ -79,7 +81,7 @@ function Menu(props) {
             <PageHeader message="Burgers" />
           </Grid>
           {menu.map((item) =>
-            item.id > 30 && item.id < 40 ? createMenuItem(item) : null
+            item.category === "Burger" ? createMenuItem(item) : null
           )}
         </Grid>
       </Paper>
@@ -97,7 +99,7 @@ function Menu(props) {
             <PageHeader message="Salads" />
           </Grid>
           {menu.map((item) =>
-            item.id > 19 && item.id < 30 ? createMenuItem(item) : null
+            item.category === "Salad" ? createMenuItem(item) : null
           )}
         </Grid>
       </Paper>

@@ -238,11 +238,7 @@ function AddForm(props) {
                         <MenuItem value={"Appetizer"}>Appetizer</MenuItem>
                         <MenuItem value={"Salad"}>Salad</MenuItem>
                         <MenuItem value={"Burger"}>Burger</MenuItem>
-                        <MenuItem value={"Special"}>Special</MenuItem>
                         <MenuItem value={"Dessert"}>Dessert</MenuItem>
-                        <MenuItem value={"Entree"}>Entree</MenuItem>
-                        <MenuItem value={"Side"}>Side</MenuItem>
-                        <MenuItem value={"Drink"}>Drink</MenuItem>
                       </Select>
                     </FormControl>
                   </Box>
