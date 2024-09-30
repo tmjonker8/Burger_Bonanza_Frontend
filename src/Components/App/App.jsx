@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../../App.css";
-import SignInForm from "../Current-User/SignInForm.jsx";
+import SignInForm from "../SignInForm/SignInForm.jsx";
 import NavBar from "../Nav/NavBar.jsx";
 import Container from "@mui/material/Container";
 import AddForm from "../Admin/AddForm.jsx";
 import Footer from "../Footer/Footer.jsx";
 import MainPage from "../MainPage/MainPage.jsx";
 import Menu from "../Menu/Menu.jsx";
-import ChangePassword from "../Current-User/ChangePassword.jsx";
+import ChangePassword from "../ChangePassword/ChangePassword.jsx";
 import Contact from "../Contact/Contact.jsx";
 import $ from "jquery";
 import Cart from "../Cart/Cart.jsx";
-import Register from "../New-User/Register.jsx";
+import Register from "../Register/Register.jsx";
 import { Routes, Route } from "react-router-dom";
 import CheckOut from "../Checkout/CheckOut.jsx";
 
