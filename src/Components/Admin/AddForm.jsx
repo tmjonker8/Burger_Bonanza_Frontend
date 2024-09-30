@@ -162,22 +162,7 @@ function AddForm(props) {
                   }}
                 >
                   <TextField
-                    required
-                    inputProps={{
-                      title: "Must be a value greater than 0.",
-                      pattern:
-                        "^(?:[1-9][0-9]{3}|[1-9][0-9]{2}|[1-9][0-9]|[1-9])$", // pattern must match 1-9999.
-                    }}
-                    error={values.id <= 0 || values.id === undefined}
-                    type="text"
-                    id="id-field"
-                    label="ID"
-                    variant="outlined"
-                    value={values.id}
-                    onChange={handleChange("id")}
-                    sx={{ marginX: 1 }}
-                  />
-                  <TextField
+                    fullWidth
                     required
                     error={values.name === ""}
                     id="name-field"
