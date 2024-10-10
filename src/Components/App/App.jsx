@@ -14,6 +14,7 @@ import Cart from "../Cart/Cart.jsx";
 import Register from "../Register/Register.jsx";
 import { Routes, Route } from "react-router-dom";
 import CheckOut from "../Checkout/CheckOut.jsx";
+import OrderHistory from "../OrderHistory/OrderHistory.jsx";
 
 function App() {
   const [quantity, setQuantity] = useState(0);
@@ -32,11 +33,12 @@ function App() {
     getUserCart();
   }, []);
 
+  let user, token;
+
   // Saves user cart to database.
   function setUserCart() {
     if (localStorage.getItem("user") !== null) {
-      let user = JSON.parse(localStorage.getItem("user"));
-      let token = user.token;
+      getUser();
 
       let shoppingCart = {
         numItems: quantity,
@@ -61,11 +63,15 @@ function App() {
     }
   }
 
+  function getUser() {
+    user = JSON.parse(localStorage.getItem("user"));
+    token = user.token;
+  }
+
   // Retrieves user cart from database.
   function getUserCart() {
     if (localStorage.getItem("user") !== null) {
-      let user = JSON.parse(localStorage.getItem("user"));
-      let token = user.token;
+      getUser();
 
       $.ajax({
         type: "get",
@@ -120,6 +126,7 @@ function App() {
       >
         <Routes>
           <Route exact path="/" element={<MainPage get={getUserCart} />} />
+          <Route exact path="history" element={<OrderHistory />} />
           <Route exact path="add" element={<AddForm />} />
           <Route
             exact
