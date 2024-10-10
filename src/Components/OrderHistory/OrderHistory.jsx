@@ -1,41 +1,47 @@
 import $ from "jquery";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function OrderHistory() {
-  let user, token;
-  let orders;
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    getPurchases();
-  });
+    let user, token;
 
-  function getUser() {
-    user = JSON.parse(localStorage.getItem("user"));
-    token = user.token;
-  }
+    function getUser() {
+      user = JSON.parse(localStorage.getItem("user"));
+      token = user.token;
+    }
+    function getPurchases() {
+      if (localStorage.getItem("user") !== null) {
+        getUser();
 
-  function getPurchases() {
-    if (localStorage.getItem("user") !== null) {
-      getUser();
+        $.ajax({
+          type: "get",
+          headers: { Authorization: token },
+          url: "http://localhost:8080/purchase/" + user.id,
+          contentType: "application/json; charset=utf-8",
+          async: false,
+          traditional: true,
+
+          success: function (data) {
+            setOrders(data);
+            console.log(orders);
+          },
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log(textStatus);
+          },
+        });
+      }
     }
 
-    $.ajax({
-      type: "get",
-      headers: { Authorization: token },
-      url: "http://localhost:8080/purchase/" + user.id,
-      contentType: "application/json; charset=utf-8",
-      traditional: true,
+    getPurchases();
+  }, []);
 
-      success: function (data) {
-        orders = JSON.parse(JSON.stringify(data));
-      },
-      error: function (XMLHttpRequest, textStatus, errorThrown) {
-        localStorage.clear();
-      },
-    });
+  function generateOrderHistory(order) {
+    console.log(order.id);
   }
 
-  return <div>{orders.map((order) => {})}</div>;
+  return <div>{orders.map((order) => generateOrderHistory(order))}</div>;
 }
 
 export default OrderHistory;

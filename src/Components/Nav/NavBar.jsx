@@ -76,6 +76,15 @@ function NavBar(props) {
     navigate("/add", { state: user });
   }
 
+  function handleHistoryMenuClick() {
+    setAnchorEl(null);
+
+    const userString = localStorage.getItem("user");
+    const user = JSON.parse(userString);
+
+    navigate("/history");
+  }
+
   function handleChangePwClick() {
     setAnchorEl(null);
 
@@ -260,7 +269,7 @@ function NavBar(props) {
                     <div>
                       <p className="greeting">{user.username}</p>
                       <hr />
-                      <MenuItem onClick={handleAddMenuClick}>
+                      <MenuItem onClick={handleHistoryMenuClick}>
                         {user !== null ? "Order History" : null}
                       </MenuItem>
                       <MenuItem onClick={handleChangePwClick}>
