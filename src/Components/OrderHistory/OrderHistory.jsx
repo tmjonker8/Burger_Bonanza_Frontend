@@ -1,5 +1,18 @@
 import $ from "jquery";
 import { useEffect, useState } from "react";
+import {
+  Typography,
+  Container,
+  Paper,
+  Grid,
+  Button,
+  Box,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
+import PageHeader from "../General/PageHeader.jsx";
 
 function OrderHistory() {
   const [orders, setOrders] = useState([]);
@@ -25,7 +38,7 @@ function OrderHistory() {
 
           success: function (data) {
             setOrders(data);
-            console.log(orders);
+            console.log(data);
           },
           error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log(textStatus);
@@ -38,7 +51,40 @@ function OrderHistory() {
   }, []);
 
   function generateOrderHistory(order) {
-    console.log(order.id);
+    return (
+      <Container maxWidth="xl">
+        <Paper
+          elevation={3}
+          sx={{
+            marginTop: 2,
+            opacity: 0.9,
+            marginBottom: 2,
+          }}
+        >
+          <Grid container spacing={0} align="center" direction="column">
+            <Grid item xs={12} l={12}>
+              <PageHeader message="Cart" />
+            </Grid>
+            {orders.length > 0 ? (
+              <Grid></Grid>
+            ) : (
+              <Grid
+                container
+                direction="row"
+                justifyContent="center"
+                sx={{ marginBottom: 3 }}
+              >
+                <Grid item l={3} sx={{ padding: 1 }}>
+                  <Typography variant="h5" component="div">
+                    Your cart is empty.
+                  </Typography>
+                </Grid>
+              </Grid>
+            )}
+          </Grid>
+        </Paper>
+      </Container>
+    );
   }
 
   return <div>{orders.map((order) => generateOrderHistory(order))}</div>;
