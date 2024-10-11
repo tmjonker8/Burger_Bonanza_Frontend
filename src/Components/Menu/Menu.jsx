@@ -6,9 +6,9 @@ import PageHeader from "../General/PageHeader.jsx";
 import { useEffect } from "react";
 
 function Menu(props) {
-  useEffect(() => {}, []);
-
   let menu;
+
+  useEffect(() => {}, [menu]);
 
   // GET request to retrieve menu items from database.
   function getMenu() {
@@ -22,6 +22,20 @@ function Menu(props) {
       success: function (data) {
         data = JSON.stringify(data);
         menu = JSON.parse(data);
+      },
+    });
+  }
+
+  function deactivateMenuItem(item) {
+    $.ajax({
+      type: "get",
+      url: "http://localhost:8080/api/menu/deactivate/" + item.id,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      traditional: true,
+
+      success: function () {
+        window.location.reload();
       },
     });
   }
@@ -44,6 +58,7 @@ function Menu(props) {
         item={menuItem}
         add={props.add}
         persist={props.persist}
+        deactivate={deactivateMenuItem}
       />
     );
   }
@@ -64,7 +79,9 @@ function Menu(props) {
             <PageHeader message="Appetizers" />
           </Grid>
           {menu.map((item) =>
-            item.category === "Appetizer" ? createMenuItem(item) : null
+            item.active === true && item.category === "Appetizer"
+              ? createMenuItem(item)
+              : null
           )}
         </Grid>
       </Paper>
@@ -81,7 +98,9 @@ function Menu(props) {
             <PageHeader message="Burgers" />
           </Grid>
           {menu.map((item) =>
-            item.category === "Burger" ? createMenuItem(item) : null
+            item.active === true && item.category === "Burger"
+              ? createMenuItem(item)
+              : null
           )}
         </Grid>
       </Paper>
@@ -99,7 +118,9 @@ function Menu(props) {
             <PageHeader message="Salads" />
           </Grid>
           {menu.map((item) =>
-            item.category === "Salad" ? createMenuItem(item) : null
+            item.active === true && item.category === "Salad"
+              ? createMenuItem(item)
+              : null
           )}
         </Grid>
       </Paper>
@@ -116,7 +137,9 @@ function Menu(props) {
             <PageHeader message="Desserts" />
           </Grid>
           {menu.map((item) =>
-            item.category === "Dessert" ? createMenuItem(item) : null
+            item.active === true && item.category === "Dessert"
+              ? createMenuItem(item)
+              : null
           )}
         </Grid>
       </Paper>

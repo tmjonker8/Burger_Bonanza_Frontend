@@ -1,5 +1,5 @@
 import { Typography, Paper, Grid, Button } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import DialogBox from "../General/DialogBox.jsx";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -12,6 +12,8 @@ const theme = createTheme({
 });
 
 function MenuItem(props) {
+  let user;
+
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -27,6 +29,37 @@ function MenuItem(props) {
     handleClickOpen();
   }
 
+  function handleDeactivateClick(item) {
+    props.deactivate(item);
+  }
+
+  function getUser() {
+    user = JSON.parse(localStorage.getItem("user"));
+  }
+
+  function generateAdminButton() {
+    getUser();
+
+    let isAdmin = false;
+
+    for (let x = 0; x < user.roles.length; x++) {
+      if (user.roles[x].name === "ADMIN") {
+        isAdmin = true;
+      }
+    }
+    if (isAdmin) {
+      return (
+        <Button
+          onClick={() => handleDeactivateClick(props.item)}
+          variant="contained"
+          sx={{ marginTop: 6, marginLeft: 2 }}
+        >
+          Deactivate
+        </Button>
+      );
+    }
+  }
+
   return (
     <Grid item xs={12} lg={4}>
       <Paper
@@ -38,11 +71,7 @@ function MenuItem(props) {
           height: 401,
         }}
       >
-        <img
-          className="menu-item"
-          src={props.item.imgPath}
-          alt="appetizer 1"
-        />
+        <img className="menu-item" src={props.item.imgPath} alt="appetizer 1" />
         <Typography variant="h5" gutterBottom component="div">
           {props.item.name}
         </Typography>
@@ -60,6 +89,7 @@ function MenuItem(props) {
           >
             Add To Cart
           </Button>
+          {generateAdminButton()}
         </ThemeProvider>
         <DialogBox
           open={open}
