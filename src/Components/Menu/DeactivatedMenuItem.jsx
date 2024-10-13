@@ -1,6 +1,5 @@
 import { Typography, Paper, Grid, Button } from "@mui/material";
 import React, { useEffect } from "react";
-import DialogBox from "../General/DialogBox.jsx";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -16,7 +15,7 @@ function DeactivatedMenuItem(props) {
     props.activate(item);
   }
 
-  function generateAdminButton() {
+  function generateActivateButton() {
     return (
       <Button
         onClick={() => handleActivateClick(props.item)}
@@ -49,7 +48,7 @@ function DeactivatedMenuItem(props) {
         <Typography variant="subtitle2" gutterBottom component="div">
           {props.item.description}
         </Typography>
-        <ThemeProvider theme={theme}>{generateAdminButton()}</ThemeProvider>
+        <ThemeProvider theme={theme}>{generateActivateButton()}</ThemeProvider>
       </Paper>
     </Grid>
   );
