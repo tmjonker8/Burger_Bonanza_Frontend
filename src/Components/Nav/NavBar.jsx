@@ -261,6 +261,9 @@ function NavBar(props) {
                       <MenuItem onClick={handleAddMenuClick}>
                         {user !== null ? "Add Menu Item" : null}
                       </MenuItem>
+                      <MenuItem onClick={handleHistoryMenuClick}>
+                        {user !== null ? "Order History" : null}
+                      </MenuItem>
                       <MenuItem onClick={handleChangePwClick}>
                         {user !== null ? "Change Password" : null}
                       </MenuItem>

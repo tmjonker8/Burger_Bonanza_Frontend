@@ -105,6 +105,7 @@ function Menu(props) {
 
   function getUser() {
     user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
   }
 
   function generateDeactivatedSection() {
@@ -112,9 +113,11 @@ function Menu(props) {
 
     let isAdmin = false;
 
-    for (let x = 0; x < user.roles.length; x++) {
-      if (user.roles[x].name === "ADMIN") {
-        isAdmin = true;
+    if (user !== null) {
+      for (let x = 0; x < user.roles.length; x++) {
+        if (user.roles[x].name === "ADMIN") {
+          isAdmin = true;
+        }
       }
     }
     if (isAdmin) {
