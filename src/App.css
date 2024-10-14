@@ -29,11 +29,11 @@ button {
 }
 
 .logo {
-  max-width: 33%;
+  max-width: 28%;
   border-radius: 50%;
   opacity: 0.9;
-  margin-top: 30px;
-  margin-bottom: 90px;
+  margin-top: 20px;
+  margin-bottom: 80px;
 }
 
 .logo-div {
